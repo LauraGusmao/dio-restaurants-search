@@ -8,6 +8,9 @@
     "ecmaVersion": 2018
   },
   "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "linebreak-style": 0,
     "react/jsx-props-no-spreading": ["off"],
     "no-confusing-arrow": [
       "error",
@@ -47,7 +50,7 @@
     "import/no-unresolved": 0,
     "react/prop-types": "off",
     "no-shadow": "off",
-    "indent": "off",
+    "indent": ["error", 2],
     "jsx-a11y/anchor-is-valid": "warn",
     "react/jsx-closing-bracket-location": "off",
     "import/prefer-default-export": "off",
@@ -55,6 +58,18 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/style-prop-object": "off",
     "react/jsx-closing-bracket": "off",
+    "react/jsx-curly-newline": ["error"],
+    "react/jsx-curly-spacing": ["error", {"when": "always"}],
+    "react/jsx-equals-spacing": ["error", "never"],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
     "prettier/prettier": "error",
     "arrow-parens": "off",
     "object-curly-newline": "off"
