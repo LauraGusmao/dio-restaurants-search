@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import MaterialIcon from '@material/react-material-icon';
 
 import { Container, Search, Logo, Wrapper, Map, CarouselTitle, Carousel } from './styles';
-import { Card } from '../../components';
+import { Card, RestaurantCard } from '../../components';
 
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
@@ -45,6 +45,7 @@ const Home = () => {
             <Card photo={ restaurante } title="Nome" />
           </Carousel>
         </Search>
+        <RestaurantCard />
       </Container>
       <Map />
     </Wrapper>
