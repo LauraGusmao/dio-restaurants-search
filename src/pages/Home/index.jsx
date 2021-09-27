@@ -5,7 +5,7 @@ import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
 import { Card, RestaurantCard, Modal, Map } from '../../components';
-import { Container, Search, Logo, Wrapper, CarouselTitle, Carousel } from './styles';
+import { Container, Search, Logo, Wrapper, CarouselTitle, Carousel, ModalTitle, ModalContent } from './styles';
 
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
@@ -71,9 +71,10 @@ const Home = () => {
       </Container>
       <Map query={ query } placeId={ placeId } />
       <Modal open={ modalOpened } onClose={ () => setModalOpened(!modalOpened) }>
-        <p>{ selectedRestaurant?.name }</p>
-        <p>{ selectedRestaurant?.formatted_phone_number }</p>
-        <p>{ selectedRestaurant?.formatted_address }</p>
+        <ModalTitle>{ selectedRestaurant?.name }</ModalTitle>
+        <ModalContent>{ selectedRestaurant?.formatted_phone_number }</ModalContent>
+        <ModalContent>{ selectedRestaurant?.formatted_address }</ModalContent>
+        <ModalContent>{ selectedRestaurant?.opening_hours?.open_now ? 'Aberto' : 'Fechado' }</ModalContent>
       </Modal>
     </Wrapper>
   );
