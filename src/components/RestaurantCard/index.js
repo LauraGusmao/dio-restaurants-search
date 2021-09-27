@@ -3,23 +3,23 @@ import ReactStars from "react-rating-stars-component";
 
 import { Restaurant, RestaurantInfo, Title, Address, RestaurantPhoto } from './styles'
 
-import restaurant from '../../assets/restaurante-fake.png'
+import restaurante from '../../assets/restaurante-fake.png';
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ restaurant }) => {
   return (
     <Restaurant>
       <RestaurantInfo>
-        <Title>Nome</Title>
+        <Title>{ restaurant.name }</Title>
         <ReactStars
           count={ 5 }
           edit={ false }
-          value={ 4 }
+          value={ restaurant.rating }
           isHalf
           activeColor="#e7711c"
         />
-        <Address>Nome</Address>
+        <Address>{ restaurant.vicinity || restaurant.formatted_address }</Address>
       </RestaurantInfo>
-      <RestaurantPhoto src={ restaurant } alt="Foto do Restaurante" />
+      <RestaurantPhoto src={ restaurant.photos ? restaurant.photos[0].getUrl() : restaurante } alt="Foto do Restaurante" />
     </Restaurant>
   );
 };
