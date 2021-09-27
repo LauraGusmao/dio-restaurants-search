@@ -49,9 +49,9 @@ const Home = () => {
             trailingIcon={ <MaterialIcon role="button" icon="search"/> }
           >
             <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={handleKeyPress}
+              value={ inputValue }
+              onChange={ (e) => setInputValue(e.target.value) }
+              onKeyPress={ handleKeyPress }
             />
           </TextField>
           { restaurants.length > 0 ? (

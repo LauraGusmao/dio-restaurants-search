@@ -24,7 +24,7 @@ export const MapContainer = (props) => {
 
   function getRestaurantById(placeId) {
     const service = new google.maps.places.PlacesService(map);
-    dispatch(setRestaurants(null));
+    dispatch(setRestaurant(null));
 
     const request = {
       placeId,
@@ -33,14 +33,14 @@ export const MapContainer = (props) => {
 
     service.getDetails(request, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        dispatch(setRestaurants(place));
+        dispatch(setRestaurant(place));
       };
     });
   };
 
   function searchByQuery(query) {
     const service = new google.maps.places.PlacesService(map);
-    dispatch(setRestaurants(null));
+    dispatch(setRestaurants([]));
 
     const request = {
       location: map.center,
