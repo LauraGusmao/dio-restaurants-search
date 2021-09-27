@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
+
 import { Restaurant, RestaurantInfo, Title, Address, RestaurantPhoto } from './styles'
 
 import restaurant from '../../assets/restaurante-fake.png'
