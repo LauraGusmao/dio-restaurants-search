@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import MaterialIcon from '@material/react-material-icon';
 
 import { Card, RestaurantCard, Modal, Map } from '../../components';
@@ -13,12 +13,14 @@ import restaurante from '../../assets/restaurante-fake.png';
 const Home = () => {
   const [inputValue, setInputValue] = useState('');
   const [query, setQuery] = useState(null);
+  const [placeId, setPlaceId] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
-  const { restaurants } = useSelector((state) => state.restaurants);
+  const { restaurants, selectedRestaurant } = useSelector((state) => state.restaurants);
 
   const settings = {
     dots: false,
     infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -29,6 +31,11 @@ const Home = () => {
     if (e.key === 'Enter') {
       setQuery(inputValue);
     };
+  };
+
+  function handleOpenModal(placeId) {
+    setPlaceId(placeId);
+    setModalOpened(true);
   };
 
   return (
@@ -58,10 +65,16 @@ const Home = () => {
             )) }
           </Carousel>
         </Search>
-        { restaurants.map((restaurant) => <RestaurantCard restaurant={ restaurant } />) }
+        { restaurants.map((restaurant) => (
+          <RestaurantCard onClick={ () => handleOpenModal(restaurant.place_id) } restaurant={ restaurant } />
+        )) }
       </Container>
-      <Map query={ query } />
-      <Modal open={ modalOpened } onClose={ () => setModalOpened(!modalOpened) } />
+      <Map query={ query } placeId={ placeId } />
+      <Modal open={ modalOpened } onClose={ () => setModalOpened(!modalOpened) }>
+        <p>{ selectedRestaurant?.name }</p>
+        <p>{ selectedRestaurant?.formatted_phone_number }</p>
+        <p>{ selectedRestaurant?.formatted_address }</p>
+      </Modal>
     </Wrapper>
   );
 };
