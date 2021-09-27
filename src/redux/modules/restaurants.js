@@ -1,5 +1,3 @@
-import { switchCase } from "../../../../../Library/Caches/typescript/4.4/node_modules/@babel/types/lib/index";
-
 export const types = {
   SET_RESTAURANTS: 'restaurants/SET_RESTAURANTS',
   SET_RESTAURANT: 'restaurants/SET_RESTAURANT',
